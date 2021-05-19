@@ -5,12 +5,9 @@ Hardware and software Platforms Project:
 The aim of this project was to program in VHDL an FPGA using the DE0-NANO SoC Altera chip in order in order to read the values returned by a sensor connected on the FPGA. In our case the peripharal was a gyroscope and more precisely we used the L3GD20, a 3-axis gyroscope. 
 
 In order to do this, we used the environement Quartus Prime 18.1 (version) to code the hardware language (VHDL). In order to drive a peripheral with the DE0-NANO SoC chip, we need a driver, to drive the peripheral and the bus between the FPGA and the device and we also need a program, (here named BLOC), in order to update the value measured by the sensor and to put it in register and to print it. You can see the link between the processor, the FPGA and the device/sensor on the figure 1.
+
 ![image](https://user-images.githubusercontent.com/84474292/118874632-69fdd400-b8eb-11eb-8465-97adf1436fb9.png)
 Figure1
-Figure3
-
-After the start condition, the communication can be initiated and the data can be transferred but respecting certain conditions of transmission. The data must be transferred when they are stable which is the case on the HIGH state of the SCL signal. The value of the SDA must be updated then on the LOW state of the SCL signal. The data reading is done on the falling edge of the SCL signal.
-![image](https://user-images.githubusercontent.com/84474292/118877554-e0500580-b8ee-11eb-813d-136da94b9e1f.png)
 
 We began the project by the implementation of the I2C driver. We used the I2C driver VHDL code of Scott Larson, especially written for the use of FGPA's. This code is based on the FSM (Finite State Machine) of the I2C bus of the master. But, in order to understand well this code and to be able to then generate a good testbench of teh driver, first we read the datasheet about our sensor and all the information about the I2C bus and protocol.
 
