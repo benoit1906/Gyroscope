@@ -25,10 +25,12 @@ In the case of the L3GD20 gyroscope peripheral, we can only have two of these de
 It is also important to notice that the microcontroller that we can see on the Figure 2 would be replaced by the FPGA in our case which is the master.
 
 The I2C protocol is governed by state transitions and conditions. There are two big conditions which permit to initiate and to stop the I2C communication which are the START and the STOP conditions.  The START condition can be detected on the bus when the master drives the SDA signal from HIGH to LOW while the SCL signal is HIGH. On the other hand the STOP condition emitted at the end of the communication between the master and the slave, can be visualize on the bus when the master drives the SDA signal from LOW to HIGH when the SCL signal is HIGH. You can visualize these two conditions on the Figure 3.
+
 ![image](https://user-images.githubusercontent.com/84474292/118877454-c282a080-b8ee-11eb-8263-b3da68c9e28f.png)
 Figure3
 
 After the start condition, the communication can be initiated and the data can be transferred but respecting certain conditions of transmission. The data must be transferred when they are stable which is the case on the HIGH state of the SCL signal. The value of the SDA must be updated then on the LOW state of the SCL signal. The data reading is done on the falling edge of the SCL signal. (see Figure 4)
+
 ![image](https://user-images.githubusercontent.com/84474292/118877721-0fff0d80-b8ef-11eb-9584-3ec30d43fe50.png)
 Figure 4
 
