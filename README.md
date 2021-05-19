@@ -60,4 +60,40 @@ The code of our I2C driver is based on the I2C finite-state machine (FSM) which 
 Figure 10 
 
 
+TESTBENCH I2C:
+Simulation of signals with ModelSim Intel FPGA Starter Edition 10.5b
+
+![image](https://user-images.githubusercontent.com/84474292/118880698-70dc1500-b8f2-11eb-8160-ddf8dc441639.png)
+Figure 11
+
+You can see on the Figure 11 the simulation of the I2C_driver_testbench VHDL code. We showed some signals like the SCL, SDA of the I2C bus, I2C_m_addr_wr, IC_m_data_wr. We can see on this screenshot the start condition of the I2C bus, we can also see that the I2C_m_addr_wr contained the value of the address of the device(L3GD20) and I2C_m_data_wr first contain the value of the CTRL_REG1 and then the value to enter in this register in order to activate the POWER mode of the peripheral and to enable the 3 axis of the gyroscope.
+
+We can also see two signal state: the first one represents the state of the testbench of the I2C_driver needed to make a writing in the control register and then to make a reading of the 6 registers containing the values of the X-Y-Z axis. The second one signal named state is the one declared in the I2C VHDL code whivh represents the states of the I2C FSM of the transmission of the master.
+
+![image](https://user-images.githubusercontent.com/84474292/118881589-8dc51800-b8f3-11eb-9ce4-695341d1ae24.png)
+Figure 12
+
+We can see here on Figure 12 the stop condition of the I2C bus and also the slave ACK.
+we can also read the value on the SDA on the falling edge of the SCl signal and we can see that it corresponds to the value of the data_wr that the master writes to the slave.
+
+
+Then, we implemented the program in VHDL which permit to update the values read by the sensor and to store them in 3 registers: REG1, REG2, REG3. We also did a testbench of the BLOC code and a simulation with Simulink.
+
+We know that we ecpect the values in the registers to be updated to 1 because we saw on the I2C test_bench that when the master was reading the data's returned by the slave, the values were always equal to 1 as you can see on the Figure 13.
+
+![image](https://user-images.githubusercontent.com/84474292/118885943-a7b52980-b8f8-11eb-8265-0cc93e37a5da.png)
+Figure 13
+
+The Figure 14 shows the testbench of the BLOC :
+
+![image](https://user-images.githubusercontent.com/84474292/118886237-f95db400-b8f8-11eb-8250-83a5870b29fc.png)
+
+As predicted with the testbench of the I2C_driver, we can see that the register will be folded by 1-values. 
+
+Finally, we had to implement the last part of the project which was the C_code to make the link between the hps/arm-processor and the FPGA and to print the values returned by the FPGA and the I2C bus. This code is available in the main.c.
+
+
+
+
+
 
