@@ -1,0 +1,6 @@
+Coff-Dump Utility V1.2
+Copyright (c) 2003 Custom Computer Services, Inc.
+-------------------------------------------------
+
+Error while creating the coff object:
+Coff file 'D:\DE0-my_first_hps-fpga_base\main.o' does not appear to be a valid COFF file.
