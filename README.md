@@ -1,6 +1,9 @@
 # Gyroscope
 
-Hardware and software Platforms Project:
+## Files
+The complete folder is available in Gyro.zip
+
+## Hardware and software Platforms Project:
 
 The aim of this project was to program in VHDL an FPGA using the DE0-NANO SoC Altera chip in order in order to read the values returned by a sensor connected on the FPGA. In our case the peripharal was a gyroscope and more precisely we used the L3GD20, a 3-axis gyroscope. 
 
@@ -126,7 +129,7 @@ Finally, we had to implement the last part of the project which was the C_code t
 To program the FPGA, we need to follow some steps. For this, we will need to use PuTTY, EDS shell and the Programmer tool in Quartus.
 
 ### 1st step is turning on the FPGA and obtaining the IP address : 
-* Make sure that the board is connected to Ethernet, to the USB of the FPGA  (both ports idealy) of your computer and that your computer is also connected to internet (you may have to use a switch). Do not connect the power supply yet.
+* Make sure that the board is connected to Ethernet, to the USB of the FPGA  (both ports ideally) of your computer and that your computer is also connected to internet (you may have to use a switch). Do not connect the power supply yet.
 * In the 'Gestionnaire de périphériques', fetch the number COM of the board. For this, head to COM ports and pick the (probably) only one there.
 * Open PuTTY, make sure that your in Serial Mode and not in SSH mode
 * Enter your COM number and for speed 115200.
@@ -142,7 +145,7 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 * Start and wait for completion.
 
 ### In EDS Shell
-* Type 'cd ' and the path of your project's repository. Use "" if your path has spaces (accents are not supported either).
+* Type 'cd ' and the path of your project's repository. Use "" if your path has spaces (accents are not supported either). You need to change the '/' by '\'.
 * Type 'make' to create your file (the name of the generated file is specified in main.c). For us, the generated file is called 'Gyroscope'.
 * Type 'scp Gyroscope root@IP:/home/root'. The IP has been fetched in PuTTY.
 * Default password is terasic.
@@ -150,8 +153,9 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 ### In PuTTY
 * Final step, type 'cd /home/root' then 'ls' to check if 'Gyroscope' is present then './gyroscope'.
 
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+## YouTube video
+Finally, you can find the tutorial video here.
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pWdyF_pFrD0/0.jpg)](https://www.youtube.com/watch?v=pWdyF_pFrD0)
 
 
 
