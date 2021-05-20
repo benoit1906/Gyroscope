@@ -139,6 +139,7 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 
 ### Quartus Programmer
 * In Quartus, open Programmer (Tools>Programmer).
+* Check in Hardware Setup that the FPGA is well detected. If not, make sure that the USB blaster is well connected.
 * Press auto-detect.
 * Add file 'soc_system.sof' in your project repository.
 * You may have to delete the duplicates.
