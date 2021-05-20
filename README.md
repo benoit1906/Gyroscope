@@ -155,7 +155,8 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 
 ## YouTube video
 Finally, you can find the tutorial video here.
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/pWdyF_pFrD0/0.jpg)](https://www.youtube.com/watch?v=pWdyF_pFrD0)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/rdNWCPZHlRg/0.jpg)](https://www.youtube.com/watch?v=rdNWCPZHlRg)
 
 
 
