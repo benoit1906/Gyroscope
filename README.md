@@ -1,8 +1,8 @@
 # Gyroscope
 Contribution of Beatse Aurélie (181380@umons.ac.be) and Vidotto Benoît (172514@umons.ac.be), students in electrical engineering at the Faculty of Polytechnic of Mons (Umons link : https://web.umons.ac.be/fr/). This project was realized in the frame of the Hardware and Software Platforms course (2020-2021 academic year).   
 
-## Files
-The complete folder is available in Gyro.zip. The version of the cleaned VHDLD project is available in soc_system.qar.
+## Code Files
+The complete code folder is available in Gyro.zip. The version of the cleaned VHDLD project is available in soc_system.qar.
 
 ## Hardware and software Platforms Project:
 
