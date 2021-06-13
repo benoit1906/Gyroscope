@@ -6,7 +6,7 @@ The complete code folder is available in Gyro.zip. The version of the cleaned VH
 
 ## Hardware and software Platforms Project:
 
-The aim of this project was to program in VHDL an FPGA using the DE0-NANO SoC Altera chip in order in order to read the values returned by a sensor connected on the FPGA. In our case the peripharal was a gyroscope and more precisely we used the L3GD20, a 3-axis gyroscope. 
+The aim of this project was to program in VHDL an FPGA using the DE0-NANO SoC Altera chip in order to read the values returned by a sensor connected on the FPGA. In our case the peripharal was a gyroscope and more precisely we used the L3GD20, a 3-axis gyroscope. 
 
 In order to do this, we used the environement Quartus Prime 18.1 (version) to code the hardware language (VHDL). In order to drive a peripheral with the DE0-NANO SoC chip, we need a driver, to drive the peripheral and the bus between the FPGA and the device and we also need a program, (here named BLOC), in order to update the value measured by the sensor and to put it in register and to print it. You can see the link between the processor, the FPGA and the device/sensor on the figure 1.
 
@@ -15,7 +15,7 @@ In order to do this, we used the environement Quartus Prime 18.1 (version) to co
 Figure 1
 
 
-We began the project by the implementation of the I2C driver. We used the I2C driver VHDL code of Scott Larson, especially written for the use of FGPA's. This code is based on the FSM (Finite State Machine) of the I2C bus of the master. But, in order to understand well this code and to be able to then generate a good testbench of teh driver, first we read the datasheet about our sensor and all the information about the I2C bus and protocol.
+We began the project by the implementation of the I2C driver. We used the I2C driver VHDL code of Scott Larson, especially written for the use of FGPA's. This code is based on the FSM (Finite State Machine) of the I2C bus of the master. But, in order to understand well this code and to be able to then generate a good testbench of the driver, first we read the datasheet about our sensor and all the information about the I2C bus and protocol.
 
 ## I2C BUS and PROTOCOL:
 
@@ -29,7 +29,7 @@ Figure 2
 In the case of the L3GD20 gyroscope peripheral, we can only have two of these devices connected to the I2C bus because there is only 1 bit for the physical address of the device permitting to distinguish two gyroscopes from each other. On the Figure 2, you can see that there are 2 bits available to distinguish the devices so in practical there would be possible for this example to connect 4 devices. 
 It is also important to notice that the microcontroller that we can see on the Figure 2 would be replaced by the FPGA in our case which is the master.
 
-The I2C protocol is governed by state transitions and conditions. There are two big conditions which permit to initiate and to stop the I2C communication which are the START and the STOP conditions.  The START condition can be detected on the bus when the master drives the SDA signal from HIGH to LOW while the SCL signal is HIGH. On the other hand the STOP condition emitted at the end of the communication between the master and the slave, can be visualize on the bus when the master drives the SDA signal from LOW to HIGH when the SCL signal is HIGH. You can visualize these two conditions on the Figure 3.
+The I2C protocol is governed by state transitions and conditions. There are two big conditions which permit to initiate and to stop the I2C communication which are the START and the STOP conditions.  The START condition can be detected on the bus when the master drives the SDA signal from HIGH to LOW while the SCL signal is HIGH. On the other hand the STOP condition emitted at the end of the communication between the master and the slave, can be visualized on the bus when the master drives the SDA signal from LOW to HIGH when the SCL signal is HIGH. You can visualize these two conditions on the Figure 3.
 
 ![image](https://user-images.githubusercontent.com/84474292/118877454-c282a080-b8ee-11eb-8263-b3da68c9e28f.png)
 
@@ -45,7 +45,7 @@ Figure 4
 
 The data can be transferred by byte (sequence of 8 bits) and then the receiver must send an ACK which is a zero acknowledge bit in order to tell that he has received the byte. In the case that the master is writing to the slave, after each byte the slave must send an ACK read by the master. You can see on the Figure 5 and Figure 6 the protocol of transfer on the I2C bus in this case concerning our L3GD20 gyroscope component.
 
-When the master is reading from the slave, a single one byte, the master does not have to send an ACK, see Figure 7. However, if the master is reading multiple bytes from the slave, the master must send an ACK to the slave after each byte received in order to prevent the slave to send the next one and the register address in automatically incremented. But for the last byte of the multiple byte tram, the master does not have to send an ACK as in the case of single byte reading. The Figure 8 demonstrates a reading of multiple bytes of data by the master from the slave for a better comprehension.
+When the master is reading from the slave, a single one byte, the master does not have to send an ACK, see Figure 7. However, if the master is reading multiple bytes from the slave, the master must send an ACK to the slave after each byte received in order to prevent the slave to send the next one and the register address in automatically incremented. But for the last byte of the multiple byte frame, the master does not have to send an ACK as in the case of single byte reading. The Figure 8 demonstrates a reading of multiple bytes of data by the master from the slave for a better comprehension.
 
 ![image](https://user-images.githubusercontent.com/84474292/118877851-37ee7100-b8ef-11eb-834e-832c9df42e20.png)
 
@@ -93,7 +93,7 @@ Figure 11
 
 You can see on the Figure 11 the simulation of the I2C_driver_testbench VHDL code. We showed some signals like the SCL, SDA of the I2C bus, I2C_m_addr_wr, IC_m_data_wr. We can see on this screenshot the start condition of the I2C bus, we can also see that the I2C_m_addr_wr contained the value of the address of the device(L3GD20) and I2C_m_data_wr first contain the value of the CTRL_REG1 and then the value to enter in this register in order to activate the POWER mode of the peripheral and to enable the 3 axis of the gyroscope.
 
-We can also see two signal state: the first one represents the state of the testbench of the I2C_driver needed to make a writing in the control register and then to make a reading of the 6 registers containing the values of the X-Y-Z axis. The second one signal named state is the one declared in the I2C VHDL code whivh represents the states of the I2C FSM of the transmission of the master.
+We can also see two signal state: the first one represents the state of the testbench of the I2C_driver needed to make a writing in the control register and then to make a reading of the 6 registers containing the values of the X-Y-Z axis. The second one signal named state is the one declared in the I2C VHDL code which represents the states of the I2C FSM of the transmission of the master.
 
 ![image](https://user-images.githubusercontent.com/84474292/118881589-8dc51800-b8f3-11eb-9ce4-695341d1ae24.png)
 
@@ -104,9 +104,9 @@ We can see here on Figure 12 the stop condition of the I2C bus and also the slav
 we can also read the value on the SDA on the falling edge of the SCl signal and we can see that it corresponds to the value of the data_wr that the master writes to the slave.
 
 
-Then, we implemented the program in VHDL which permit to update the values read by the sensor and to store them in 3 registers: REG1, REG2, REG3. We also did a testbench of the BLOC code and a simulation with Simulink.
+Then, we implemented the program in VHDL which permit to update the values read by the sensor and to store them in 3 registers: REG1, REG2, REG3. We also did a testbench of the BLOC code and a simulation with Modelsim.
 
-We know that we ecpect the values in the registers to be updated to 1 because we saw on the I2C test_bench that when the master was reading the data's returned by the slave, the values were always equal to 1 as you can see on the Figure 13.
+We know that we expect the values in the registers to be updated to 1 because we saw on the I2C test_bench that when the master was reading the data's returned by the slave, the values were always equal to 1 as you can see on the Figure 13.
 
 ![image](https://user-images.githubusercontent.com/84474292/118885943-a7b52980-b8f8-11eb-8265-0cc93e37a5da.png)
 
