@@ -133,7 +133,7 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 * Make sure that the board is connected to Ethernet, to the USB of the FPGA  (both ports ideally) of your computer and that your computer is also connected to internet (you may have to use a switch). Do not connect the power supply yet.
 * In the 'Gestionnaire de périphériques', fetch the number COM of the board. For this, head to COM ports and pick the (probably) only one there.
 * Open PuTTY, make sure that your in Serial Mode and not in SSH mode
-* Enter your COM number and for speed 115200.
+* Enter your COM number and for speed 115200. (It coresponds to the UART baudrate)
 * Once the console is opened, connect the power supply to the FPGA.
 * For login, enter 'root', then fetch the IP address with the command 'udhcpc'.
 ![185836075_483187579674855_8464576346386183196_n](https://user-images.githubusercontent.com/81262129/118947703-e4643d80-b957-11eb-9e09-75d2a809d9ce.png)
@@ -153,7 +153,7 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 * Default password is terasic.
 
 ### In PuTTY
-* Final step, type 'cd /home/root' then 'ls' to check if 'Gyroscope' is present then './gyroscope'.
+* Final step, type 'ls' to check if 'Gyroscope' is present then './gyroscope'.
 
 ## YouTube video
 Finally, you can find the tutorial video here.
