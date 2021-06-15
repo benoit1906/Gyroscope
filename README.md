@@ -127,10 +127,11 @@ Finally, we had to implement the last part of the project which was the C_code t
 
 ## Programming the FGPA
 
-To program the FPGA, we need to follow some steps. For this, we will need to use PuTTY, EDS shell and the Programmer tool in Quartus.
+To program the FPGA, we need to follow some steps. For this, we will need to use PuTTY, EDS command shell and the Programmer tool in Quartus.
+Putty is a terminal emulator which permit to dialogue with the DE0-NANO-SoC to get some information like the IP address of the Linus environnement contained in the micro sd card of the FPGA. Then, with EDS command shell, which is a Linux simulator for the PC, it will compile the main C code into a binary file and then with a specific comman will send the file into the Linux environement inside the FPGA thanks to the IP address obtained via Putty.
 
 ### 1st step is turning on the FPGA and obtaining the IP address : 
-* Make sure that the board is connected to Ethernet, to the USB of the FPGA  (both ports ideally) of your computer and that your computer is also connected to internet (you may have to use a switch). Do not connect the power supply yet.
+* Make sure that the board is connected to Ethernet, to the USB and UART of the FPGA  (both ports ideally) of your computer and that your computer is also connected to internet (you may have to use a switch). Do not connect the power supply yet.
 * In the 'Gestionnaire de périphériques', fetch the number COM of the board. For this, head to COM ports and pick the (probably) only one there.
 * Open PuTTY, make sure that your in Serial Mode and not in SSH mode
 * Enter your COM number and for speed 115200. (It coresponds to the UART baudrate)
