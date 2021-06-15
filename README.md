@@ -147,7 +147,7 @@ To program the FPGA, we need to follow some steps. For this, we will need to use
 * Start and wait for completion.
 
 ### In EDS Shell
-* Type 'cd ' and the path of your project's repository. Use "" if your path has spaces (accents are not supported either). You need to change the '\' by '/'.
+* Type 'cd ' and the path of your project's repository. Use "" if your path has spaces (accents are not supported either). You need to change the '\\' by '/'.
 * Type 'make' to create your file (the name of the generated file is specified in main.c). For us, the generated file is called 'Gyroscope'.
 * Type 'scp Gyroscope root@IP:/home/root'. The IP has been fetched in PuTTY.
 * Default password is terasic.
