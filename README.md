@@ -161,7 +161,11 @@ Finally, you can find the tutorial video here.
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/rdNWCPZHlRg/0.jpg)](https://www.youtube.com/watch?v=rdNWCPZHlRg)
 
 
-You can see that the program is not working well. Many reasons can be responsible of this disfunctionning. First, we thought about the fact that the code might not be well upload on the FPGA because when we try to observe the SCL and SDA signal on the scope, we only see a voltage of 3.3V which is the alimentation tension of the Gyrosocope but we do not see any clock on the SCL signal.
+You can see that the program is not working well. Many reasons can be responsible of this disfunctionning. 
+* First, we thought about the fact that the code might not be well upload on the FPGA because when we try to observe the SCL and SDA signal on the scope, we only see a voltage of 3.3V which is the alimentation tension of the Gyrosocope but we do not see any clock on the SCL signal.
+* Another possibility is that the VHDL code might well be uploaded on the FPGA but that the main FPGA clock is not present (preconfiguration problem).
+*  Finally, it might be a routing problem between the SCL and SDA pins.
+
 
 
 
